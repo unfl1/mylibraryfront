@@ -8,7 +8,7 @@ function Info() {
             </div>
             <div className=" ml-24 text-lg font-bold pt-3">
                 도서관에 없는 재밌는 책들<br />
-                쉽고 편하게 비려서 읽어보아요
+                쉽고 편하게 빌려서 읽어보아요
             </div>
             </div>
         </div>
