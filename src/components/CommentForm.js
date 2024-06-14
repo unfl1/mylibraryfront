@@ -22,14 +22,14 @@ const CommentForm = ({ postId, parentId, onCommentSubmit }) => {
     <form onSubmit={handleSubmit} className="p-4 bg-gray-100 rounded">
       <div className="mb-2">
         <textarea
-          placeholder="Write a comment..."
+          placeholder="댓글 남기기"
           value={content}
           onChange={(e) => setContent(e.target.value)}
           className="p-2 border border-gray-300 rounded w-full"
         />
       </div>
       <button type="submit" className="px-4 py-2 text-black bg-transparent rounded hover:text-blue-500">
-        Submit
+        등록
       </button>
     </form>
   );

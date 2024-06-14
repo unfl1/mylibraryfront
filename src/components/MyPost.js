@@ -12,18 +12,18 @@ const MyPost = () => {
     const { username } = useSelector(state => state.user.user);
 
     useEffect(() => {
-        fetchMyPosts();
-    }, []);
+        const fetchMyPosts = async () => {
+            try {
+                // URL에 사용자 이름(username)을 추가하여 요청 보내기
+                const response = await axios.get(`${API_BASE_URL}/post/mypost/${username}`);
+                setPosts(response.data);
+            } catch (error) {
+                console.error('Error fetching my posts:', error);
+            }
+        };
 
-    const fetchMyPosts = async () => {
-        try {
-            // URL에 사용자 이름(username)을 추가하여 요청 보내기
-            const response = await axios.get(`${API_BASE_URL}/post/mypost/${username}`);
-            setPosts(response.data);
-        } catch (error) {
-            console.error('Error fetching my posts:', error);
-        }
-    };
+        fetchMyPosts();
+    }, [username]);
 
     const handlePostClick = (postId) => {
         navigate(`/post/${postId}`);
@@ -41,7 +41,7 @@ const MyPost = () => {
                     >
                         {post.imageUrl && (
                             <div className="mb-4">
-                                <img src={post.imageUrl} alt={post.title} className="w-40 h-40 object-cover mx-auto" />
+                                <img src={`${API_BASE_URL}${post.imageUrl}`} alt={post.title} className="w-40 h-40 object-cover mx-auto" />
                             </div>
                         )}
                         <h3 className="text-xl font-semibold mb-2">{post.title}</h3>

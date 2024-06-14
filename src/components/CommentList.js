@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import CommentForm from './CommentForm';
 import API_BASE_URL from '../Config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 const CommentList = ({ postId }) => {
   const [comments, setComments] = useState([]);
@@ -87,7 +89,7 @@ const CommentList = ({ postId }) => {
             onClick={() => setShowReplyForms({ ...showReplyForms, [comment.id]: !showReplyForms[comment.id] })}
             className="px-4 py-2 text-black bg-transparent rounded hover:text-blue-500 mt-2"
           >
-            {showReplyForms[comment.id] ? 'Hide Reply Form' : 'Reply'}
+            {showReplyForms[comment.id] ? '댓글 창 닫기' : '댓글 쓰기'}
           </button>
           {showReplyForms[comment.id] && (
             <CommentForm
@@ -104,9 +106,9 @@ const CommentList = ({ postId }) => {
               {user && user.username === reply.username && (
                 <button
                   onClick={() => handleDeleteComment(reply.id)}
-                  className="px-4 py-2 text-red-500 bg-transparent rounded hover:text-red-700 mt-2"
+                  className="text-red-500 hover:text-red-700 mt-2"
                 >
-                  Delete
+                  삭제 <FontAwesomeIcon icon={faTimes} />
                 </button>
               )}
             </div>
@@ -114,9 +116,9 @@ const CommentList = ({ postId }) => {
           {user && user.username === comment.username && (
             <button
               onClick={() => handleDeleteComment(comment.id)}
-              className="px-4 py-2 text-red-500 bg-transparent rounded hover:text-red-700 mt-2"
+              className="text-red-500 hover:text-red-700 mt-2"
             >
-              Delete
+              삭제 <FontAwesomeIcon icon={faTimes} />
             </button>
           )}
         </div>

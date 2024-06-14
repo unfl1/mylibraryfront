@@ -1,8 +1,8 @@
 function Info() {
     return (
-        <div className="bg-yellow-200">
+        <div className="bg-blue-300">
             <div className=" ml-24  pt-6 pb-6 pl-12">
-            <div className=" ml-24 mb-4 font-black text-3xl text-yellow-800">
+            <div className=" ml-24 mb-4 font-black text-3xl text-blue-800">
                 내 주변 사람들과<br />
                 책 공유
             </div>
