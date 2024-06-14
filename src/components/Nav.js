@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../redux/actions/Authactions'; // 수정된 import 경로
+import logo from '../assets/logo.png'; // 로고 이미지 import
 
 function Nav() {
     const dispatch = useDispatch();
@@ -26,7 +27,8 @@ function Nav() {
         <div className="mb-5">
             <div>
                 <Link to="/" onClick={handleHomeClick}>
-                    <div className="flex justify-center text-3xl font-black whitespace-nowrap dark:text-white pt-10">
+                    <div className="flex justify-center items-center text-3xl font-black whitespace-nowrap dark:text-white pt-10">
+                        <img src={logo} alt="Logo" className="h-10 mr-2" /> {/* 로고 이미지 추가 */}
                         나만의 도서관
                     </div>
                 </Link>

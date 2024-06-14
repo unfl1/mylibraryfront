@@ -6,7 +6,7 @@ import API_BASE_URL from '../Config';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-const CommentList = ({ postId }) => {
+const CommentList = ({ postId, post }) => {
   const [comments, setComments] = useState([]);
   const [showCommentForm, setShowCommentForm] = useState(false);
   const [showReplyForms, setShowReplyForms] = useState({});
@@ -81,9 +81,9 @@ const CommentList = ({ postId }) => {
       </div>
       {showCommentForm && <CommentForm postId={postId} onCommentSubmit={handleCommentSubmit} />}
       {comments.map(comment => (
-        <div key={comment.id} className={`p-4 border border-gray-200 rounded mb-2 ${comment.nickname === user?.nickname ? 'bg-white' : 'bg-white'}`}>
-          <div className="font-bold">{comment.nickname}</div>
-          <div>{comment.content}</div>
+        <div key={comment.id} className={`p-4 border-t  border-gray-200 rounded mb-2 ${comment.username === post.username ? 'bg-white' : 'bg-white'}`}>
+          <div className={`font-bold ${comment.username === post.username ? 'text-blue-400' : ''}`}>{comment.nickname}</div>
+          <div className={`${comment.username === post.username ? 'text-gray-400 font-bold' : ''}`}>{comment.content}</div>
           <div className="text-sm text-gray-500">{new Date(comment.createdAt).toLocaleString()}</div>
           <button
             onClick={() => setShowReplyForms({ ...showReplyForms, [comment.id]: !showReplyForms[comment.id] })}
@@ -99,9 +99,9 @@ const CommentList = ({ postId }) => {
             />
           )}
           {comment.replies && comment.replies.map(reply => (
-            <div key={reply.id} className={`p-2 border border-gray-300 rounded ml-4 mt-2 ${reply.nickname === user?.nickname ? 'bg-white-100' : 'bg-gray-100'}`}>
-              <div className="font-bold">{reply.nickname}</div>
-              <div>{reply.content}</div>
+            <div key={reply.id} className={`p-2 border border-gray-300 rounded ml-4 mt-2 ${reply.username === post.username ? 'bg-white' : 'bg-white'}`}>
+              <div className={`font-bold ${reply.username === post.username ? 'text-blue-400' : ''}`}>{reply.nickname}</div>
+              <div className={` ${reply.username === post.username ? 'text-gray-400 font-bold' : ''}`}>{reply.content}</div>
               <div className="text-xs text-gray-500">{new Date(reply.createdAt).toLocaleString()}</div>
               {user && user.username === reply.username && (
                 <button

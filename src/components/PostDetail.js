@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import API_BASE_URL from '../Config';
 
-const PostDetail = () => {
+const PostDetail = ({ onPostFetch }) => {
     const { postId } = useParams();
     const navigate = useNavigate();
     const [post, setPost] = useState(null);
@@ -15,13 +15,14 @@ const PostDetail = () => {
             try {
                 const response = await axios.get(`${API_BASE_URL}/post/${postId}`);
                 setPost(response.data);
+                onPostFetch(response.data); // 부모 컴포넌트로 게시물 데이터를 전달
             } catch (error) {
                 console.error('Error fetching post:', error);
             }
         };
 
         fetchPost();
-    }, [postId]);
+    }, [postId, onPostFetch]);
 
     const handleDeletePost = async () => {
         try {
@@ -76,7 +77,7 @@ const PostDetail = () => {
                 )}
                 <hr className="my-4 border-t-1 border-gray-300" />
                 
-                    <div className="font-bold text-yellow-400 mb-2">{post.authorNickname}</div>
+                    <div className="font-bold text-blue-400 mb-2">{post.authorNickname}</div>
                     <div className="font-bold "> {post.location}</div>
                 
                 <hr className="my-4 border-t-1 border-gray-300" />

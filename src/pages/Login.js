@@ -74,7 +74,7 @@ function Login() {
                     placeholder="ID를 입력해주세요"
                     onChange={handleChange}
                     value={user.username}
-                    className="block w-full rounded-md border border-gray-300 focus:border-blue-700 focus:outline-none focus:ring-1 focus:ring-yellow-700 py-1 px-1.5 text-gray-500"
+                    className="block w-full rounded-md border border-gray-300 focus:border-yellow-700 focus:outline-none focus:ring-1 focus:ring-yellow-700 py-1 px-1.5 text-gray-500"
                   />
                 </div>
                 <div className="mb-3">
