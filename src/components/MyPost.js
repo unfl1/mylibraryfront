@@ -41,7 +41,7 @@ const MyPost = () => {
                     >
                         {post.imageUrl && (
                             <div className="mb-4">
-                                <img src={`${API_BASE_URL}${post.imageUrl}`} alt={post.title} className="w-40 h-40 object-cover mx-auto" />
+                                <img src={`${API_BASE_URL}/api/images/${post.imageUrl}`} alt={post.title} className="w-40 h-40 object-cover mx-auto" />
                             </div>
                         )}
                         <h3 className="text-xl font-semibold mb-2">{post.title}</h3>
