@@ -68,8 +68,7 @@ const PostDetail = ({ onPostFetch }) => {
                 </div>
                 {post.imageUrl && (
                     <div className="mb-6 w-96 mx-auto">
-                        <img
-                            src={`${API_BASE_URL}/images/${post.imageUrl}`}
+                        <img src={`${API_BASE_URL}/images/${post.imageUrl.split('/').pop()}`}
                             alt={post.title}
                             className="w-full h-auto object-contain"
                         />
