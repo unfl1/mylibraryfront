@@ -15,8 +15,14 @@ const PostList = () => {
     const fetchPosts = async () => {
         try {
             const response = await axios.get(`${API_BASE_URL}/post/posts`);
-            // 최신 게시물이 가장 위에 오도록 역순으로 설정
-            setPosts(response.data.reverse());
+            console.log('API Response:', response.data); // 응답 데이터 구조 확인
+            if (Array.isArray(response.data)) {
+                setPosts(response.data.reverse());
+            } else if (response.data && Array.isArray(response.data.posts)) {
+                setPosts(response.data.posts.reverse());
+            } else {
+                console.error('Expected an array but got:', response.data);
+            }
         } catch (error) {
             console.error('Error fetching posts:', error);
         }
