@@ -12,7 +12,7 @@ function Nav() {
 
     const handleLogout = () => {
         dispatch(logout());
-        // 로그아웃 후 리다이렉트 가능
+        // 로그아웃 후 리다이렉트
         navigate('/');
         window.location.reload(); // 로그아웃 후 홈 화면으로 이동
     };
